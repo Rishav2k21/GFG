@@ -8,16 +8,27 @@ class Solution
 public:
     vector<int> singleNumber(vector<int> nums) 
     {
-        map<int,int>m;
-        vector<int>v;
-        for(int i=0;i<nums.size();i++){
-            m[nums[i]]++;
-        }
-        for(auto i:m){
-            if(i.second==1)  v.push_back(i.first);
-        }
-        return v;
-        
+        int x=0;
+     for(int i=0;i<nums.size();i++){
+         x=x^nums[i];
+     }
+     int bit=((x&(x-1))^x);
+     int s1=0;
+     int s2=0;
+     for(int i=0;i<nums.size();i++){
+         if(bit&nums[i]){
+             s1=s1^nums[i];
+         }
+         else{
+             s2=s2^nums[i];
+         }
+     }
+     if(s1>s2){
+         return {s2,s1}; 
+         
+     }
+     return {s1,s2};
+     
     }
 };
 
