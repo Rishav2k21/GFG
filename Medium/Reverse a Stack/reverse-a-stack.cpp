@@ -10,18 +10,26 @@ using namespace std;
 
 class Solution{
 public:
-queue<int>q;
-    void Reverse(stack<int> &St){
+    void insert(stack<int> &St,int n){
         if(St.empty()){
-            return;
+            St.push(n);
+            return ;
         }
-     q.push(St.top());
+        int y=St.top();
         St.pop();
-        Reverse(St);
-         St.push(q.front());
-         q.pop();
+        insert(St,n);
+        St.push(y);
         
-      
+    }
+    void Reverse(stack<int> &St){
+        if(St.empty()) return;
+      int n=St.top();
+       St.pop();
+       
+       Reverse(St);
+       insert(St,n);
+    
+         
     }
 };
 
