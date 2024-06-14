@@ -1,0 +1,37 @@
+//{ Driver Code Starts
+// Initial Template for C++
+#include <bits/stdc++.h>
+using namespace std;
+
+
+// } Driver Code Ends
+// User function Template for C++
+class Solution {
+  public:
+    string armstrongNumber(int n) {
+        int g=n;
+      int a=n%10;
+      n=n/10;
+      int b=n%10;
+      n=n/10;
+      int c=n;
+      int f=a*a*a + b*b*b + c*c*c;
+      if(f==g)return "true";
+      return "false";
+    }
+};
+
+//{ Driver Code Starts.
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        cin >> n;
+        Solution ob;
+        cout << ob.armstrongNumber(n) << endl;
+    }
+    return 0;
+}
+
+// } Driver Code Ends
